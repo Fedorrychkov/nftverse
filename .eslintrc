@@ -1,0 +1,11 @@
+// {
+//   "extends": ["next/babel", "next/core-web-vitals"]
+// }
+{
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
+  "env": {
+    "es6": true
+  }
+}

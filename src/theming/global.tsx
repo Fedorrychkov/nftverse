@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 import { normalize } from "polished";
 
+// TODO: Dont work like css prop in div
 export const globalStyles = css`
   ${normalize()}
 

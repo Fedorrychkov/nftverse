@@ -21,6 +21,23 @@ export class Web3Provider {
     return this
   }
 
+  public async getAccount() {
+    const accounts = await this.web3.eth.getAccounts()
+    this.account = accounts?.[0]
+
+    return this.account
+  }
+
+  public set currentAccount(account: string) {
+    this.account = account
+  }
+
+  public async handleAccountRequest() {
+    await window.ethereum.send('eth_requestAccounts')
+
+    return true
+  }
+
   public static get Web3Instance() {
     const instance = this._instance || (this._instance = new this())
 
@@ -33,18 +50,6 @@ export class Web3Provider {
     return instance
   }
 
-  public async getAccount() {
-    const accounts = await this.web3.eth.getAccounts()
-    this.account = accounts?.[0]
-
-    return this.account
-  }
-
-  public async handleAccountRequest() {
-    await window.ethereum.send('eth_requestAccounts')
-
-    return true
-  }
 }
 
 export const web3 = Web3Provider.Web3Instance
